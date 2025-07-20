@@ -45,6 +45,7 @@
   height: 200px;          
      object-fit: cover;   
   border-radius: 15px;
+  width: 90%;
   
 }
 
@@ -52,9 +53,11 @@
     display:flex;
     justify-content:center;
   gap:70px;
+  flex-direction: column;
     flex-wrap: wrap;
   padding:20px;
  margin-top: 20px;;
+ align-items: center;
  
  
 }
