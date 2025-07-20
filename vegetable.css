@@ -1,3 +1,6 @@
+@media only screen and (max-width: 768px){
+  
+
 .search-veg{
     font-size: 10px;
     padding:10px;
@@ -123,4 +126,5 @@ font-size: 16px;
 .cart-container{
   position:relative;
  
+}
 }
