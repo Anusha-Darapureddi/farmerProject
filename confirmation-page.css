@@ -1,0 +1,73 @@
+.textarea-box{
+    width:600px;
+    height:100px;
+    resize:none;
+    border-color:grey;
+    
+
+}
+.order-heading{
+    color:#27F561;
+     font-size:30px;
+    margin-left: 100px;
+    padding:10px;
+    font-family:arial;
+   
+}
+.delivery-address{
+     margin-right:10px;
+    color:blue;
+    cursor:pointer;
+    font-size:25px;
+    font-family:arial;
+   padding-left:20px;
+ 
+}.change-button{
+    font-size:20px;
+    border-radius: 5px;
+    border:2px;
+    padding:5px;
+    padding-top:5px;
+    background-color:blue;
+    color:white;
+   margin-top:20px;
+   margin-left:10px;
+   margin-bottom:10px;
+   margin-right: 125px;
+   cursor:pointer;
+
+
+}
+.address-header{
+  display:flex;
+justify-content:space-between;
+margin-right:20px;
+margin-top:20px;
+
+     
+
+}
+.delivery-section{
+    border:solid;
+    border-radius:10px;
+    border-top: -50px;
+    border-bottom:-100px;
+border-color:grey;
+
+
+}
+.confirmed-box{
+    border:solid;
+    border-color:grey;
+   
+   margin:20px;
+    border-radius:10px;
+    width:700px;
+}
+.thanku,.orderbox{
+    color:yellow;
+    padding:5px;
+   margin:40px;
+   margin-right:5px;
+   margin-left:30px;
+}

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        .username,.password{
+            font-size: 10px;
+            padding:10px;
+            padding-left:20px;
+            width:200px;
+            flex:1fr;
+            border-radius: 5px;
+        }
+
+
+        .para{
+            font-size:20px;
+        }
+ 
+
+        .division{
+            background-color:#F9F6F0;
+            padding:10px;
+            margin-left:100px;
+            margin-right:100px;
+            text-align: center;
+            margin-top:100px;
+            position:relative;
+            border-radius:20px;
+            display: flex;                  
+            justify-content: center;  
+            padding-bottom:30px;
+            font-family: arial;  
+        }
+
+
+        .mybutton{
+          font-size:20px;
+          margin:20px;
+          border:10px;
+          border-radius:10px;
+          background-color:blue;
+          color:white;
+          padding:10px;
+        }
+
+
+        .spl-char{
+            font-size:10px;
+            color:red;
+            height:25px;
+        }
+
+
+        .toggle{
+          position:absolute;
+           top:55%;
+           right:175px;
+        border-radius:50%;
+        border:transparent;
+        }
+        
+            
+
+    </style>
+    <body>
+        <div class="division">
+        <form id="myform">
+             
+            <p class="para" >email<br></p><input type="email" class="username" placeholder="enter your email" id="myforms" required><br><br>
+            <p class="para para-js">password<br></p><input type="password" class="password" placeholder="enter your password" id="mypass" required><br><br>
+            
+            <button type="button" id="togglepassword" class="toggle">👁️</button>
+
+            <button class="mybutton" id="mybutton">Submit</button>
+        </form>
+        </div>
+        <script>
+            const form=document.getElementById('myform');
+         const myforms=document.getElementById("myforms");
+         const toggle=document.getElementById("togglepassword")
+         const pass=document.getElementById("mypass");
+           toggle.addEventListener("click",()=>{
+            const isPassword=pass.type==="password"
+
+            pass.type=isPassword?'text':'password';
+         })
+
+         const hasUpperCase=/[A-Z]/;
+         const hasSpecialChar=/[!@#$%^&*]/;
+         const number=/[0-9]/;
+         
+          
+         const button=document.getElementById("mybutton");
+         button.addEventListener('click',(e)=>{
+            e.preventDefault();
+            console.log('button clicked')
+            if(!myforms.checkValidity()||!pass.checkValidity()){
+                 myforms.reportValidity();
+                pass.reportValidity();
+                  alert('fill the details')
+                  return;
+            }
+                   
+           if(!hasUpperCase.test(pass.value)||!hasSpecialChar.test(pass.value)||!number.test(pass.value)){
+            //alert('password should be capital letter and special character')
+            const paras=document.querySelector(".para-js");
+            paras.innerHTML="password should contain of capital letter and special character"
+            paras.classList.add('spl-char')
+           return;
+            }
+         window.confirm("are you sure! you want submit")
+         
+         form.reset();
+
+         })
+        </script>
+    </body>
+</html>

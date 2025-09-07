@@ -1,0 +1,179 @@
+export const products=[{
+    name:"Onions",
+    price:"₹40",
+    image:"images/onions.jpg"
+},{
+     name:"Oranges",
+    price:"₹30",
+    image:"images/orange.jpg"
+},{
+     name:"Rice",
+    price:"₹60",
+    image:"images/rice.jpg"
+},{
+     name:"Milk",
+    price:"₹45",
+    image:"images/milk.jpg"
+},
+{
+     name:"Grapes",
+    price:"₹50",
+    image:"images/grapes.jpg"
+},
+{
+     name:"Eggs",
+    price:"₹50",
+    image:"images/eggs.jpg"
+},
+{
+     name:"Spinach",
+    price:"₹20",
+    image:"images/spinach.jpg"
+},{
+     name:"Ground nuts",
+    price:"₹40",
+    image:"images/groundnuts.jpg"
+},{
+     name:"Cotton",
+    price:"₹78",
+    image:"images/cotton.jpg"
+},{
+     name:"Tomatoes",
+    price:"₹20",
+    image:"images/tomatoes.jpg"
+},{
+     name:"Cauli flower",
+    price:"₹30",
+    image:"images/cauliflower.jpg"
+},{
+     name:"Brinjal",
+    price:"₹25",
+    image:"images/brinjal.jpg"
+},{
+     name:"Carrot",
+    price:"₹30",
+    image:"images/carrot.jpg"
+},{
+     name:"Ivy Gourd",
+    price:"₹25",
+    image:"images/ivygourd.jpg"
+},{
+     name:"Beetroot",
+    price:"₹50",
+    image:"images/beetroot.jpg"
+},{
+     name:"Drumsticks",
+    price:"₹40",
+    image:"images/drumsticks.jpg"
+},{
+     name:"Apples",
+    price:"₹200",
+    image:"images/apple.jpg"
+},{
+     name:"Banana",
+    price:"₹80",
+    image:"images/banana.jpg"
+},{
+     name:"Mangoes",
+    price:"₹300",
+    image:"images/mango.jpg"
+},{
+     name:"Papaya",
+    price:"₹40",
+    image:"images/papaya.jpg"
+},{
+     name:"Dragon fruit",
+    price:"₹50",
+    image:"images/dragon-fruit.jpg"
+},{
+     name:"Water melon",
+    price:"₹40",
+    image:"images/water-melon.jpg"
+},{
+     name:"Wheat",
+    price:"₹50",
+    image:"images/wheat.jpg"
+},{
+     name:"Barley",
+    price:"₹30",
+    image:"images/barley.jpg"
+},{
+     name:"Corn",
+    price:"₹23",
+    image:"images/corn.jpg"
+},{
+     name:"Brown rice",
+    price:"₹140",
+    image:"images/brownrice.jpg"
+},{
+     name:"Oats",
+    price:"₹170",
+    image:"images/oats.jpg"
+},{
+     name:"Millets",
+    price:"₹30",
+    image:"images/millets.jpg"
+},{
+    name:"Lassi",
+    price:"₹30",
+    image:"images/lassi.jpg" 
+},{
+    name:"Paneer",
+    price:"₹70",
+    image:"images/paneer.jpg" 
+},{
+    name:"Yogurt",
+    price:"₹40",
+    image:"images/yogurt.jpg" 
+},{
+    name:"Ice cream",
+    price:"₹40",
+    image:"images/ice.jpg" 
+},{
+    name:"Ghee",
+    price:"₹50",
+    image:"images/ghee.jpg" 
+},{
+    name:"Buter milk",
+    price:"₹30",
+    image:"images/buttermilk.jpg" 
+},{
+    name:"Butter",
+    price:"₹40",
+    image:"images/butter.jpg" 
+},{
+    name:"Lassi",
+    price:"₹30",
+    image:"images/lassi.jpg" 
+},{
+    name:"Cabbage",
+    price:"₹30",
+    image:"images/cabbage.jpg" 
+},{
+    name:"Mint",
+    price:"₹25",
+    image:"images/mint.jpg" 
+},{
+    name:"Cuury leaves",
+    price:"₹15",
+    image:"images/curry-leaves.jpg" 
+},{
+    name:"Broccoli",
+    price:"₹40",
+    image:"images/broccoli.jpg" 
+},{
+    name:"Coriander",
+    price:"₹20",
+    image:"images/coriander.jpg" 
+},{
+    name:"Pak choi",
+    price:"₹50",
+    image:"images/Pakchoi.jpg" 
+},{
+    name:"Fenugreek",
+    price:"₹50",
+    image:"images/fenugreek.jpg" 
+}
+
+
+]

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <link rel="stylesheet" href="confirmation-page.css">
+    </head>
+    <body>
+
+      
+        <h1 class="order-heading">Order details & delivery information</h1>
+        <div class="delivery-section">
+        <div class="address-header">
+        <h2 class="delivery-address">Delivery Address:</h2>
+        <button class="change-button">change</button>
+        </div>
+        <textarea class="textarea-box textarea-js" spellcheck="false" ></textarea>
+      </div>
+      <div class="confirmed-box">
+      <h2 class="thanku">THANK YOU!😊💐</h2>
+      <h2 class="orderbox">YOUR ORDER HAS BEEN CONFIRMED 🛒✅.</h2>
+      </div>
+    </body>
+    <script>
+     const textarea= document.querySelector('.textarea-js')
+      window.addEventListener("load",()=>{
+        const savedData=localStorage.getItem("textareacontent");
+        if(savedData){
+          textarea.value=savedData;
+        }
+      })
+      textarea.addEventListener("input",()=>{
+        localStorage.setItem("textareacontent",textarea.value)
+      })
+    </script>
+</html>
