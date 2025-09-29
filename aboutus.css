@@ -1,0 +1,63 @@
+ body {
+            font-family: Arial, sans-serif;
+          
+            
+            min-height: 100vh;
+            background: #f0f0f0;
+            background-image: url('images/aboutus.jpg');
+            background-size: contain;
+           text-align: center;
+           width:100%;
+        }
+.headingh1 {
+    font-size: 3rem; /* scalable */
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #214022;
+    text-align: center; /* heading stays centered */
+    margin-bottom: 20px;
+}
+
+.heading1,
+.heading2,
+.heading3 {
+    font-size: 1.2rem; /* scalable */
+    text-align: justify; /* text justified */
+    max-width: 800px;   /* limits width for readability */
+    margin: 0 auto 20px auto; /* centers container horizontally */
+    line-height: 1.6;  /* better readability */
+}
+
+/* Wrapper div to center everything on the page */
+.headingdiv {
+    text-align: justify;  /* ensures inner text is justified */
+    max-width: 90%;       /* responsive width */
+    width: 600px;         /* default width */
+    margin: 0 auto;       /* center horizontally */
+    padding: 0 10px;      /* padding for small screens */
+}
+
+/* Responsive font adjustments */
+@media (max-width: 768px) {
+    .headingh1 {
+        font-size: 2.2rem;
+    }
+    .heading1,
+    .heading2,
+    .heading3 {
+        font-size: 1rem;
+    }
+    .headingdiv {
+        width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    .headingh1 {
+        font-size: 1.8rem;
+    }
+    .heading1,
+    .heading2,
+    .heading3 {
+        font-size: 0.9rem;
+    }
+}

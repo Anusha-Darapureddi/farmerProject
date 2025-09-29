@@ -1,73 +1,293 @@
-.textarea-box{
-    width:600px;
-    height:100px;
-    resize:none;
-    border-color:grey;
-    
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: #f8f9fa;
+    min-height: 100vh;
+}
 
+.order-heading {
+    font-size: 2.2rem;
+    text-align: center;
+    color: #154734;
+    margin: 32px 0 16px 0;
+    font-family: Georgia, serif;
+    letter-spacing: 1px;
 }
-.order-heading{
-    color:#27F561;
-     font-size:30px;
-    margin-left: 100px;
-    padding:10px;
-    font-family:arial;
-   
+
+/* --- Payment Option Cards - Universal --- */
+.credit-card, .debit-card, .upiCard,
+label.credit-card, label.debit-card, label.upiCard, label.options-box {
+    display: flex;
+    align-items: center;
+    background-color: #f5f5e6;
+    border-radius: 18px;
+    padding: 24px 16px;
+    margin: 20px auto 0 auto;
+    max-width: 520px;      /* Wider for desktop! */
+    width: 100%;
+    font-size: 1.1rem;
+    border: 1px solid #e0e0e0;
+    position: relative;
+    gap: 18px;
+    box-shadow: 0 2px 12px rgba(50,80,50,0.06);
+    cursor: pointer;
+    transition: border 0.2s, box-shadow 0.2s;
+    box-sizing: border-box;
+    word-break: break-word; /* prevents overflow */
+    white-space: normal;
 }
-.delivery-address{
-     margin-right:10px;
-    color:blue;
-    cursor:pointer;
-    font-size:25px;
-    font-family:arial;
-   padding-left:20px;
- 
-}.change-button{
-    font-size:20px;
+
+.credit-card input[type="radio"],
+.debit-card input[type="radio"],
+.upiCard input[type="radio"] {
+    position: absolute;
+    right: 16px;
+    width: 20px;
+    height: 20px;
+    top: 22px;
+    accent-color: #154734;
+    cursor: pointer;
+}
+.credit-card:active,
+.debit-card:active,
+.upiCard:active,
+label.upiCard:active,
+label.options-box:active {
+    border: 1.5px solid #154734;
+    box-shadow: 0 0 0 2px #d2f4e9;
+}
+
+.credit-card:hover,
+.debit-card:hover,
+.upiCard:hover {
+    border: 1.5px solid #2055e8;
+    background-color: #e9f0ff;
+    transition: all 0.2s ease-in-out;
+}
+
+.credit-icon, .debit-icon, .upi-icon {
+    margin-right: 14px;
+}
+.card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+}
+.card-text {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #14274e;
+    word-break: break-word;
+}
+.credit-number {
+    font-size: 0.85rem;
+    color: #5a5a5a;
+    word-break: break-word;
+}
+
+.card-border {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 16px auto;
+    max-width: 520px;
+    box-shadow: 0 1px 12px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    box-sizing: border-box;
+    word-break: break-word;
+}
+.cardnumber, .carddetails {
+    font-size: 1rem;
+    font-family: arial;
+    padding-bottom: 8px;
+    color: #2e3b3b;
+}
+.text-box, .text-box-valid {
+    width: 90%;
+    min-width: 120px;
+    height: 34px;
     border-radius: 5px;
-    border:2px;
-    padding:5px;
-    padding-top:5px;
-    background-color:blue;
-    color:white;
-   margin-top:20px;
-   margin-left:10px;
-   margin-bottom:10px;
-   margin-right: 125px;
-   cursor:pointer;
-
-
+    border: 1px solid #CECECE;
+    margin: 0 0 15px 0;
+    padding: 5px 10px;
+    box-sizing: border-box;
+    flex-wrap: wrap;
 }
-.address-header{
-  display:flex;
-justify-content:space-between;
-margin-right:20px;
-margin-top:20px;
-
-     
-
+.card-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
 }
-.delivery-section{
-    border:solid;
+.card-button, .order-button {
+    padding: 11px 0;
+    background-color: #ffe600;
+    border-radius: 5px;
+    font-family: arial;
+    font-size: 1.03rem;
+    cursor: pointer;
+    width: 95%;
+    max-width: 330px;
+    margin: 16px auto 0 auto;
+    border: 1px solid #e2e2e2;
+    display: block;
+    transition: background 0.18s;
+    box-sizing: border-box;
+}
+.card-button:hover, .order-button:hover {
+    background-color: #f3d600;
+}
+#cardDetails { display: none; }
+#upi-options, #bank-id { display: none; }
+.button-section {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+.options-box input[type="radio"] {
+    transform: scale(1.2);
+}
+.paytm, .phone-pay, .google-pay, .bank {
+    background: #fefefe;
+    border-radius: 5px;
+    border: 1px solid #e0e0e0;
+    margin: 8px 0;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    justify-content: space-between;
+    max-width: 520px;
+    width: 100%;
+    box-sizing: border-box;
+    word-break: break-word;
+}
+.paytm-main, .phonepe-main, .googlepay-main, .bank-main {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+}
+.button-decoration { padding-top: 6px; }
+.total-selected-option {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    padding: 10px 0 0 0;
+}
+
+/* --- Delivery Address Section --- */
+.delivery-section {
+    border: 1px solid #a4a4a4;
     border-radius:10px;
-    border-top: -50px;
-    border-bottom:-100px;
-border-color:grey;
-
-
+    background: #fbfdfa;
+    max-width: 520px;
+    margin: 24px auto;
+    padding: 18px 16px;
+    box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    box-sizing: border-box;
+    word-break: break-word;
 }
-.confirmed-box{
-    border:solid;
-    border-color:grey;
-   
-   margin:20px;
-    border-radius:10px;
-    width:700px;
+.address-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 12px;
+    min-width: 0;
 }
-.thanku,.orderbox{
-    color:yellow;
-    padding:5px;
-   margin:40px;
-   margin-right:5px;
-   margin-left:30px;
+.delivery-address {
+    color: #2055e8;
+    font-size: 1.25rem;
+    font-family: arial;
+    font-weight: bold;
+    margin-right: 14px;
+    padding-left: 6px;
+    word-break: break-word;
+}
+
+.change-button {
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #2055e8;
+    padding: 6px 16px;
+    background-color: #2055e8;
+    color: white;
+    margin: 0 0 0 6px;
+    cursor:pointer;
+    transition: background 0.18s;
+}
+.change-button:hover {
+    background: #1c489e;
+}
+.textarea-box {
+    width: 100%;
+    min-width: 100px;
+    max-width: 100%;
+    height: 90px;
+    resize: none;
+    border-color: #aaa;
+    font-size: 1rem;
+    padding: 7px;
+    margin: 0 0 10px 0;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.order-button {
+    margin: 20px auto 10px auto;
+    display: block;
+    background: #ffe600;
+    font-weight: bold;
+    color: #1E3A1F;
+    border: 1px solid #e2e2e2;
+}
+
+/* --- Responsiveness --- */
+@media (max-width: 900px) {
+    .credit-card, .debit-card, .upiCard, .delivery-section, .card-border,
+    .paytm, .phone-pay, .google-pay, .bank {
+        max-width: 98vw;
+        padding: 14px 5vw;
+    }
+}
+@media (max-width: 550px) {
+    .order-heading { font-size: 1.1rem; margin: 13px 0 8px 0; }
+    .credit-card, .debit-card, .upiCard, .delivery-section, .card-border,
+    .paytm, .phone-pay, .google-pay, .bank {
+        max-width: 99vw;
+        min-width: 0;
+        padding: 8px 2vw;
+        font-size: 0.97rem;
+    }
+    .paytm, .phone-pay, .google-pay, .bank {
+        font-size: 0.97rem;
+        padding: 8px 4px;
+    }
+    .order-button, .card-button {
+        width: 100%;
+        max-width: 99vw;
+        font-size: 0.98rem;
+        padding: 10px 0;
+    }
+    .address-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 3px;
+    }
+    .delivery-address {
+        font-size: 0.99rem;
+        margin: 0 0 2px 0;
+    }
+    .textarea-box {
+        font-size: 0.97rem;
+        height: 72px;
+    }
 }

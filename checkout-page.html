@@ -1,189 +1,167 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <link rel="stylesheet" href="checkout-page.css">
-    </head>
-    <body>
-        <div class="cart-container">
-        <img src="images/logo.jpg" width="100px" 
-        class="logo-image">
-            <p class="checkout-para"> Checkout( <span class="js-summary-count" ></span>items)</p>
-        </div>
-        <div class="review-order">
-            Review your order:
-        </div>
-        <div class="cart-items"></div>
-        <div class="border-class">
-        <p class="order-box" >Order-summary</p>
-            <div class="order-summary-grid"> 
-            <div>Items(<span class="js-summary-count">0</span>):</div>
-             <div class="js-total-price">₹0</div>
+<head>
+  <link rel="stylesheet" href="checkout-page.css" />
+</head>
+<body>
+  <div class="cart-container">
+    <img src="images/logo.jpg" width="100px" class="logo-image" />
+    <p class="checkout-para">Checkout (<span class="js-summary-count"></span> items)</p>
+  </div>
 
-            <div>Shipping & handling:</div>
-             <div class="underline js-shipping-cost">₹4.99</div>
+  <div class="review-order">Review your order:</div>
+  <div class="cart-items"></div>
 
-            <div>Total before tax:</div>
-             <div class="js-subtotal">0</div> 
+  <div class="border-class">
+    <p class="order-box">Order-summary</p>
+    <div class="order-summary-grid">
+      <div>Items (<span class="js-summary-count">0</span>):</div>
+      <div class="js-total-price">₹0</div>
 
-            <div>Estimated tax(10%):</div>
-            <div class="js-tax">0</div>
+      <div>Shipping & handling:</div>
+      <div class="underline js-shipping-cost">₹4.99</div>
 
-            <div class="order-total">Order total</div>
-              <div class="order-total js-final-total">₹126.48</div>
-            <a href="confirmation-page.html"> <button class="order-button"> Place your order</button></a>
-            </div>
-           </div>  
-        </div>
+      <div>Total before tax:</div>
+      <div class="js-subtotal">₹0</div>
 
-        
-    </body>
-    <script src="https://unpkg.com/dayjs@1.11.10/dayjs.min.js"></script>
-    <script >
+      <div>Estimated tax (10%):</div>
+      <div class="js-tax">₹0</div>
 
-        
-        
-        const add=document.querySelector('.cart-items')
-        
-        let selectedShipping=0;
-        function getDeliveryDates(){
-            const today=dayjs();
-            return{
-                first:today.add(3,"day").format("dddd,MMMM D"),
-                second:today.add(2,"day").format("dddd,MMMM D"),
-                third:today.add(1,"day").format("dddd,MMMM D")
-            }
-        }
-        function renderCart(){
-            add.innerHTML="";
-           
-            const cart=JSON.parse(localStorage.getItem("tomatocart")||"[]")
-            if(cart.length===0){
-                add.innerHTML=`
-                   <div style="text-align: center; padding: 40px; color: #666;">
-                        <h2>Your cart is empty</h2>
-                        <p>Add some fresh products from our farmers!</p>
-                        <a href="index.html" style="background-color: #1E3A1F; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Continue Shopping</a>
-                    </div>
-                `;
-                updatePriceCalculations(0,0);
-                return;
-                }
-                const dates=getDeliveryDates()
-            
-        let totalPrice=0;
-        
-          document.querySelectorAll('.js-summary-count').forEach(element=>{
-            element.textContent=cart.length
-          })
-        cart.forEach((item,index)=>{
-            const price=item.price.match(/\d+/);
-            const itemPrice=price?parseInt(price[0]):0;
-            const quantity=parseInt(item.quantity)||1
-            totalPrice+=(itemPrice*quantity);
-            const cartItemHtml=
-            `
+      <div class="order-total">Order total</div>
+      <div class="order-total js-final-total">₹0</div>
 
+      <a href="confirmation-page.html">
+        <button class="order-button">Place your order</button>
+      </a>
+    </div>
+  </div>
 
-       <div class="border-class2 js-cart-summary">
-        <div class="item-container">
-            <div class="left-part">
-            <p class="delivery-date">Delivery date:${dates.first}</p>
-         
-            <div class="products">
-            <img src="${item.image}" >
-           
-            </div>
-            <p class="quantity">${item.name}</p>
-           
-            <div class="update-delete">
-            <div class="quantity"><strong >${item.price}</strong></div>
-            <div class="quantity">Quantity:${item.quantity}</div>
-            <div class="update-link" data-index="${index}">Update</div>
-            <div class="delete-link" data-index="${index}">Delete </div>
-           
-            </div>
-        </div>
-        
-        <div class="right-part">
-        <p class="delivery-option">Choose a delivery option:</p>
-        <form>
-            <div class="choose"><input type="radio" name="day${index}" value="0" data-days="1" class="js-delivery-options" data-item-index="${index}" checked>${dates.first}</div>
-            <div class="free-shipping">Free Shipping</div>
+  <script src="https://unpkg.com/dayjs@1.11.10/dayjs.min.js"></script>
+  <script>
+    const add = document.querySelector(".cart-items");
+    let selectedShipping = 0;
 
-            <div class="choose"><input type="radio" name="day${index}" value="4.99" data-days="2" class="js-delivery-options" data-item-index="${index}"> ${dates.second}</div>
-            <div class="free-shipping">₹4.99 - Shipping</div>
-
-            <div class="choose"><input type="radio" name="day${index}" value="9.99" data-days="3" class="js-delivery-options" data-item-index="${index}"> ${dates.third}</div>
-            <div class="free-shipping">₹9.99 - Shipping</div>
-        </form>
-       </div>
-       </div>
-       </div>
-
-            `
-           add.innerHTML+=cartItemHtml
-
-    })
-    updatePriceCalculations(totalPrice,selectedShipping);
-
-    
-    document.querySelectorAll('.delete-link').forEach(delBtn=>{    
-         delBtn.addEventListener('click',()=>{
-            const index=delBtn.getAttribute('data-index')
-        cart.splice(index,1)
-        localStorage.setItem("tomatocart",JSON.stringify(cart))
-        renderCart()
-    })
-
-    })
-   
-        
-   document.querySelectorAll('.js-delivery-options').forEach(shippingBtn=>{
-
-    shippingBtn.addEventListener('change',()=>{
-        const itemindex=shippingBtn.getAttribute('data-item-index');
-        const days=parseInt(shippingBtn.getAttribute('data-days'));
-        const dates=getDeliveryDates();
-        
-       const deliveryDate=dayjs().add(days,"day").format("dddd,MMMM D")
-        const deliveryDateElement=shippingBtn.closest('.item-container').querySelector('.delivery-date')
-       
-       deliveryDateElement.textContent=`Delivery date:${deliveryDate}`;
-
-
-    selectedShipping=parseFloat(shippingBtn.value)
-     updatePriceCalculations(totalPrice,selectedShipping)
-    })
-   })
-   //const checkedOption=document.querySelector('.js-delivery-options:checked');
-   //if(checkedOption){
-    //selectedShipping=parseFloat(checkedOption.value);
-    // updatePriceCalculations(totalPrice,selectedShipping)
- //  }
-    }
-    function updatePriceCalculations(itemsTotal,shipping=0){
-//        const itemsTotal=isNaN(totalPrice)?0:totalPrice
-      
-        const subTotal=itemsTotal+shipping;
-        const tax=subTotal*0.1;
-        const finalTotal=subTotal+tax;
-        document.querySelector('.js-total-price').textContent=`₹${itemsTotal.toFixed(2)}`;
-        document.querySelector('.js-shipping-cost').textContent=`₹${shipping.toFixed(2)}`
-        document.querySelector('.js-subtotal').textContent=`₹${subTotal.toFixed(2)}`;
-        document.querySelector('.js-tax').textContent=`₹${tax.toFixed(2)}`;
-        document.querySelector('.js-final-total').textContent=`₹${finalTotal.toFixed(2)}`
-
+    function getDeliveryDates() {
+      const today = dayjs();
+      return {
+        first: today.add(3, "day").format("dddd, MMMM D"),
+        second: today.add(2, "day").format("dddd, MMMM D"),
+        third: today.add(1, "day").format("dddd, MMMM D"),
+      };
     }
 
+    function renderCart() {
+      add.innerHTML = "";
+      const cart = JSON.parse(localStorage.getItem("tomatocart") || "[]");
 
+      if (cart.length === 0) {
+        add.innerHTML = `
+          <div style="text-align: center; padding: 40px; color: #666;">
+            <h2>Your cart is empty</h2>
+            <p>Add some fresh products from our farmers!</p>
+            <a href="index.html" style="background-color: #1E3A1F; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Continue Shopping</a>
+          </div>
+        `;
+        updatePriceCalculations(0, 0);
+        return;
+      }
 
+      const dates = getDeliveryDates();
+      let totalPrice = 0;
+
+      document.querySelectorAll(".js-summary-count").forEach((el) => {
+        el.textContent = cart.length;
+      });
+
+      cart.forEach((item, index) => {
+        const price = item.price.match(/\d+/);
+        const itemPrice = price ? parseInt(price[0]) : 0;
+        const quantity = parseInt(item.quantity) || 1;
+        totalPrice += itemPrice * quantity;
+
+        add.innerHTML += `
+          <div class="border-class2 js-cart-summary">
+            <div class="item-container">
+              <div class="left-part">
+                <p class="delivery-date">Delivery date: ${dates.first}</p>
+                <div class="products">
+                  <img src="${item.image}" />
+                </div>
+                <p class="quantity">${item.name}</p>
+                <div class="update-delete">
+                  <div class="quantity"><strong>${item.price}</strong></div>
+                  <div class="quantity">Quantity: ${item.quantity}</div>
+                  <div class="update-link" data-index="${index}">Update</div>
+                  <div class="delete-link" data-index="${index}">Delete</div>
+                </div>
+              </div>
+              <div class="right-part">
+                <p class="delivery-option">Choose a delivery option:</p>
+                <form>
+                  <div class="choose"><input type="radio" name="day${index}" value="0" data-days="1" class="js-delivery-options" data-item-index="${index}" checked> ${dates.first}</div>
+                  <div class="free-shipping">Free Shipping</div>
+
+                  <div class="choose"><input type="radio" name="day${index}" value="4.99" data-days="2" class="js-delivery-options" data-item-index="${index}"> ${dates.second}</div>
+                  <div class="free-shipping">₹4.99 - Shipping</div>
+
+                  <div class="choose"><input type="radio" name="day${index}" value="9.99" data-days="3" class="js-delivery-options" data-item-index="${index}"> ${dates.third}</div>
+                  <div class="free-shipping">₹9.99 - Shipping</div>
+                </form>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+
+      updatePriceCalculations(totalPrice, selectedShipping);
+
+      // ✅ Delete item
+      document.querySelectorAll(".delete-link").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const index = btn.getAttribute("data-index");
+          cart.splice(index, 1);
+          localStorage.setItem("tomatocart", JSON.stringify(cart));
+          renderCart();
+        });
+      });
+
+      // ✅ Update quantity on click
+      document.querySelectorAll(".update-link").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const index = btn.getAttribute("data-index");
+          cart[index].quantity = parseInt(cart[index].quantity || 1) + 1; // increment quantity
+          localStorage.setItem("tomatocart", JSON.stringify(cart));
+          renderCart();
+        });
+      });
+
+      // ✅ Update delivery option
+      document.querySelectorAll(".js-delivery-options").forEach((option) => {
+        option.addEventListener("change", () => {
+          const days = parseInt(option.getAttribute("data-days"));
+          const deliveryDate = dayjs().add(days, "day").format("dddd, MMMM D");
+          option.closest(".item-container").querySelector(".delivery-date").textContent = `Delivery date: ${deliveryDate}`;
+          selectedShipping = parseFloat(option.value);
+          updatePriceCalculations(totalPrice, selectedShipping);
+        });
+      });
+    }
+
+    function updatePriceCalculations(itemsTotal, shipping = 0) {
+      const subTotal = itemsTotal + shipping;
+      const tax = subTotal * 0.1;
+      const finalTotal = subTotal + tax;
+
+      document.querySelector(".js-total-price").textContent = `₹${itemsTotal.toFixed(2)}`;
+      document.querySelector(".js-shipping-cost").textContent = `₹${shipping.toFixed(2)}`;
+      document.querySelector(".js-subtotal").textContent = `₹${subTotal.toFixed(2)}`;
+      document.querySelector(".js-tax").textContent = `₹${tax.toFixed(2)}`;
+      document.querySelector(".js-final-total").textContent = `₹${finalTotal.toFixed(2)}`;
+
+      localStorage.setItem("orderFinalTotal", finalTotal.toFixed(2));
+    }
 
     renderCart();
-
-
-    </script>
+  </script>
+</body>
 </html>
-
-
-
-

@@ -1,34 +1,370 @@
 <!DOCTYPE html>
 <html>
-    <head>
-      <link rel="stylesheet" href="confirmation-page.css">
-    </head>
-    <body>
+  <head>
+    <link rel="stylesheet" href="confirmation-page.css">
+  </head>
+  <body>
+    <h1 class="order-heading">Order confirmation</h1>
 
-      
-        <h1 class="order-heading">Order details & delivery information</h1>
-        <div class="delivery-section">
-        <div class="address-header">
+    <!-- Credit card -->
+    <label class="credit-card">
+      <input type="radio" name="card" value="credit" id="creditCard">
+      <img src="images/mastercard.jpg" width="50" height="30" class="credit-icon">
+      <div class="card-info">
+        <div class="card-text">Credit card/Debit card</div>
+        <div class="credit-number">41** **** **** **11</div>
+      </div> 
+    </label>
+
+    <!-- card box -->
+    <div class="card-border" id="cardDetails">
+      <div class="cardnumber">Card Number</div>
+      <input type="password" placeholder="XXXX XXXX XXXX XXXX" class="text-box">
+      <div class="card-row">
+        <div class="carddetails">Valid Thru</div>
+        <input type="password" placeholder="MM/YY" class="text-box-valid">
+        <div class="carddetails"></div>
+        <input type="password" placeholder="CVV" class="text-box-valid">
+      </div>   
+      <button class="card-button"><span class="showFinalTotal"></span></button>
+    </div>
+
+    <!-- UPI -->
+    <label class="upiCard">
+      <input type="radio" name="card" value="upi" id="upiCard">
+      <img src="images/upi.jpg" width="50" height="30" class="upi-icon">
+      <div class="card-info">
+        <div class="card-text">Upi</div>
+        <div class="credit-number">An***@**i</div>
+      </div>
+    </label>
+
+    <label class="options-box" id="upi-options">
+      <div class="total-selected-option">
+        <!-- PhonePe -->
+        <div class="phone-pay">
+          <div class="phonepay-main">
+            <input type="radio" class="selected-option" name="option" id="phone-pay-id">
+            <span class="phonepay-text">PhonePe</span>
+            <div class="button-decoration" id="phonepay-button-id">
+              <button class="card-button"><span class="showFinalTotal"></span></button>
+            </div>
+          </div>
+          <img src="images/phonepay.jpg" width="30" height="30" class="phonepay-image">
+        </div>
+
+        <!-- Paytm -->
+        <div class="paytm">
+          <div class="paytm-main">
+            <input type="radio" name="option" id="paytm-id">
+            <span class="paytm-text">Paytm</span>
+            <div class="button-decoration" id="paytm-button-id">
+              <button class="card-button"><span class="showFinalTotal"></span></button>
+            </div>
+          </div>
+          <img src="images/paytm.jpg" width="30" height="30" class="paytm-image">
+        </div>
+
+        <!-- Google Pay -->
+        <div class="google-pay">
+          <div class="googlepay-main">
+            <input type="radio" name="option" id="googlepay-id">
+            <span class="googlepay-text">GooglePay</span>
+            <div class="button-decoration" id="googlepay-button-id">
+              <button class="card-button"><span class="showFinalTotal"></span></button>
+            </div>
+          </div>
+          <img src="images/googlepay.jpg" width="50" height="35" class="googlepay-image">
+        </div>
+      </div>
+    </label>
+
+    <!-- Net Banking -->
+    <label class="upiCard">
+      <input type="radio" name="card" value="upi" id="netBankingCard">
+      <img src="images/netbanking.jpg" width="50" height="30" class="upi-icon">
+      <div class="card-info">
+        <div class="card-text">Net Banking</div>
+      </div>
+    </label>
+
+    <label class="options-box" id="bank-id">
+      <div class="total-selected-option">
+        <!-- SBI -->
+        <div class="bank">
+          <div class="bank-main">
+            <input type="radio" name="option" id="sbi-id">
+            <span class="bank-text">State Bank of India</span>
+            <div class="button-decoration" id="sbi-button-id">
+              <div class="button-section">
+                <button class="card-button"><span class="showFinalTotal"></span></button>
+              </div>
+            </div>
+            <img src="images/sbi.jpg" width="30" height="35" class="bank-image">
+          </div>
+        </div>
+
+        <!-- HDFC -->
+        <div class="bank">
+          <div class="bank-main">
+            <input type="radio" name="option" id="hdfc-id">
+            <span class="bank-text">HDFC Bank</span>
+            <div class="button-decoration" id="hdfc-button-id">
+              <div class="button-section">
+                <button class="card-button"><span class="showFinalTotal"></span></button>
+              </div>
+            </div>
+            <img src="images/hdfc.jpg" width="30" height="40" class="bank-image">
+          </div>
+        </div>
+
+        <!-- ICICI -->
+        <div class="bank">
+          <div class="bank-main">
+            <input type="radio" name="option" id="icici-id">
+            <span class="bank-text">ICICI Bank</span>
+            <div class="button-decoration" id="icici-button-id">
+              <div class="button-section">
+                <button class="card-button"><span class="showFinalTotal"></span></button>
+              </div>
+            </div>
+            <img src="images/icici.jpg" width="30" height="35" class="bank-image">
+          </div>
+        </div>
+
+        <!-- Kotak -->
+        <div class="bank">
+          <div class="bank-main">
+            <input type="radio" name="option" id="kotak-id">
+            <span class="bank-text">Kotak Mahindra Bank</span>
+            <div class="button-decoration" id="kotak-button-id">
+              <div class="button-section">
+                <button class="card-button"><span class="showFinalTotal"></span></button>
+              </div>
+            </div>
+            <img src="images/kotak.jpg" width="30" height="35" class="bank-image">
+          </div>
+        </div>
+
+        <!-- Axis -->
+        <div class="bank">
+          <div class="bank-main">
+            <input type="radio" name="option" id="axis-id">
+            <span class="bank-text">Axis Bank</span>
+            <div class="button-decoration" id="axis-button-id">
+              <div class="button-section">
+                <button class="card-button"><span class="showFinalTotal"></span></button>
+              </div>
+            </div>
+            <img src="images/axis.jpg" width="30" height="35" class="bank-image">
+          </div>
+        </div>
+      </div>
+    </label>
+
+    <!-- Cash on Delivery -->
+    <label class="upiCard">
+      <input type="radio" name="card" value="upi" id="codCard">
+      <img src="images/cod.jpg" width="50" height="30" class="upi-icon">
+      <div class="card-info">
+        <div class="card-text">Cash on delivery</div>
+      </div>
+    </label>
+
+    <!-- Delivery Address -->
+    <div class="delivery-section">
+      <div class="address-header">
         <h2 class="delivery-address">Delivery Address:</h2>
         <button class="change-button">change</button>
-        </div>
-        <textarea class="textarea-box textarea-js" spellcheck="false" ></textarea>
       </div>
-      <div class="confirmed-box">
-      <h2 class="thanku">THANK YOU!😊💐</h2>
-      <h2 class="orderbox">YOUR ORDER HAS BEEN CONFIRMED 🛒✅.</h2>
-      </div>
-    </body>
+      <textarea class="textarea-box textarea-js" spellcheck="false"></textarea>
+    </div>
+
+    <div>
+      <a href="final-page.html"><button class="order-button">Confirm your order (<span class="showFinalTotal"></span>)</button></a>
+    </div>
+
     <script>
-     const textarea= document.querySelector('.textarea-js')
-      window.addEventListener("load",()=>{
-        const savedData=localStorage.getItem("textareacontent");
-        if(savedData){
-          textarea.value=savedData;
+      const textarea = document.querySelector('.textarea-js');
+      window.addEventListener("load", () => {
+        const savedData = localStorage.getItem("textareacontent");
+        if (savedData) textarea.value = savedData;
+      });
+      textarea.addEventListener("input", () => {
+        localStorage.setItem("textareacontent", textarea.value);
+      });
+
+      const creditCardRadio = document.getElementById('creditCard');
+      const cardDetails = document.getElementById('cardDetails');
+      const upiCard = document.getElementById('upiCard');
+      const upiOptions = document.getElementById('upi-options');
+      const netbanking = document.getElementById('netBankingCard');
+      const banking = document.getElementById('bank-id');
+
+      const phonePay = document.getElementById('phone-pay-id');
+      const paytm = document.getElementById('paytm-id');
+      const googlepay = document.getElementById('googlepay-id');
+      const phonePayButton = document.getElementById('phonepay-button-id');
+      const paytmButton = document.getElementById('paytm-button-id');
+      const googlepayButton = document.getElementById('googlepay-button-id');
+
+      const sbi = document.getElementById('sbi-id');
+      const hdfc = document.getElementById('hdfc-id');
+      const icici = document.getElementById('icici-id');
+      const kotak = document.getElementById('kotak-id');
+      const axis = document.getElementById('axis-id');
+      const sbiButton = document.getElementById('sbi-button-id');
+      const hdfcButton = document.getElementById('hdfc-button-id');
+      const iciciButton = document.getElementById('icici-button-id');
+      const kotakButton = document.getElementById('kotak-button-id');
+      const axisButton = document.getElementById('axis-button-id');
+
+      function hideAll() {
+        cardDetails.style.display = "none";
+        upiOptions.style.display = "none";
+        banking.style.display = "none";
+        phonePayButton.style.display = "none";
+        paytmButton.style.display = "none";
+        googlepayButton.style.display = "none";
+        sbiButton.style.display = 'none';
+        hdfcButton.style.display = 'none';
+        iciciButton.style.display = 'none';
+        kotakButton.style.display = 'none';
+        axisButton.style.display = 'none';
+      }
+
+      creditCardRadio.addEventListener('change', () => {
+        if (creditCardRadio.checked) {
+          hideAll();
+          cardDetails.style.display = 'block';
         }
-      })
-      textarea.addEventListener("input",()=>{
-        localStorage.setItem("textareacontent",textarea.value)
-      })
+      });
+
+      upiCard.addEventListener('change', () => {
+        if (upiCard.checked) {
+          hideAll();
+          upiOptions.style.display = 'block';
+        }
+      });
+
+      phonePay.addEventListener('change', () => {
+        if (phonePay.checked) {
+          phonePayButton.style.display = 'block';
+          paytmButton.style.display = 'none';
+          googlepayButton.style.display = 'none';
+        }
+      });
+
+      paytm.addEventListener('change', () => {
+        if (paytm.checked) {
+          paytmButton.style.display = 'block';
+          phonePayButton.style.display = 'none';
+          googlepayButton.style.display = 'none';
+        }
+      });
+
+      googlepay.addEventListener('change', () => {
+        if (googlepay.checked) {
+          googlepayButton.style.display = 'block';
+          phonePayButton.style.display = 'none';
+          paytmButton.style.display = 'none';
+        }
+      });
+
+      netbanking.addEventListener('change', () => {
+        if (netbanking.checked) {
+          hideAll();
+          banking.style.display = 'block';
+        }
+      });
+
+      sbi.addEventListener('change', () => {
+        if (sbi.checked) {
+          sbiButton.style.display = 'block';
+          hdfcButton.style.display = 'none';
+          iciciButton.style.display = 'none';
+          kotakButton.style.display = 'none';
+          axisButton.style.display = 'none';
+        }
+      });
+
+      hdfc.addEventListener('change', () => {
+        if (hdfc.checked) {
+          hdfcButton.style.display = 'block';
+          sbiButton.style.display = 'none';
+          iciciButton.style.display = 'none';
+          kotakButton.style.display = 'none';
+          axisButton.style.display = 'none';
+        }
+      });
+
+      icici.addEventListener('change', () => {
+        if (icici.checked) {
+          iciciButton.style.display = 'block';
+          sbiButton.style.display = 'none';
+          hdfcButton.style.display = 'none';
+          kotakButton.style.display = 'none';
+          axisButton.style.display = 'none';
+        }
+      });
+
+      kotak.addEventListener('change', () => {
+        if (kotak.checked) {
+          kotakButton.style.display = 'block';
+          sbiButton.style.display = 'none';
+          hdfcButton.style.display = 'none';
+          iciciButton.style.display = 'none';
+          axisButton.style.display = 'none';
+        }
+      });
+
+      axis.addEventListener('change', () => {
+        if (axis.checked) {
+          axisButton.style.display = 'block';
+          sbiButton.style.display = 'none';
+          hdfcButton.style.display = 'none';
+          iciciButton.style.display = 'none';
+          kotakButton.style.display = 'none';
+        }
+      });
+
+      function updatePaymentButtons() {
+        const total = localStorage.getItem("orderFinalTotal") || 0;
+        const buttons = document.querySelectorAll('.card-button');
+        buttons.forEach(btn => {
+          btn.textContent = `Pay ₹${total}`;
+        });
+      }
+
+      window.addEventListener('load', () => {
+        updatePaymentButtons();
+
+        const finalTotal = localStorage.getItem("orderFinalTotal");
+        document.querySelectorAll(".showFinalTotal").forEach(span => {
+          span.textContent = "₹" + (finalTotal || 0);
+        });
+      });
+
+       // ✅ Prevent order confirmation if no payment selected
+      const orderButton = document.querySelector(".order-button");
+      orderButton.addEventListener("click", (e) => {
+        const paymentSelected = document.querySelector('input[name="card"]:checked');
+
+        if (!paymentSelected) {
+          e.preventDefault();
+          alert("⚠️ Please select a payment method before confirming your order.");
+          return;
+        }
+
+        if (
+          (upiCard.checked || netbanking.checked) &&
+          !document.querySelector('input[name="option"]:checked')
+        ) {
+          e.preventDefault();
+          alert("⚠️ Please select a specific option under UPI or Net Banking.");
+          return;
+        }
+      });
     </script>
+  </body>
 </html>
